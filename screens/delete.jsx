@@ -10,7 +10,7 @@ function deleteById() {
     return (
     <View style={styles.container}>
         <Teclado>
-            <Text>Get personaje by Id</Text>
+            <Text>Delete personaje by Id</Text>
             <StatusBar style="auto" />
             <TextInput
                 style={styles.textInput}

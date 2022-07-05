@@ -2,21 +2,52 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import Boton from './components/boton'
+import {NavigationContainer} from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native';
+
 
 function App() {
     return (
+        <NavigationContainer>
     <View style={styles.container}>
-        <Teclado>
-            <Text>Get personaje by Id</Text>
+            <Text>Personajes API</Text>
             <StatusBar style="auto" />
             <Boton
                 text= "Get Personaje"
                 onPress={ () =>{
-                navigation.navigate('get')
+                navigation.navigate('Get')
                 }}
             />
-        </Teclado>
+            <StatusBar style="auto" />
+            <Boton
+                text= "Get Personaje by id"
+                onPress={ () =>{
+                navigation.navigate('GetById');
+                }}
+            />
+            <StatusBar style="auto" />
+            <Boton
+                text= "Create Personaje"
+                onPress={ () =>{
+                navigation.navigate('Create')
+                }}
+            />
+            <StatusBar style="auto" />
+            <Boton
+                text= "Update Personaje"
+                onPress={ () =>{
+                navigation.navigate('Update')
+                }}
+            />
+            <StatusBar style="auto" />
+            <Boton
+                text= "Delete Personaje"
+                onPress={ () =>{
+                navigation.navigate('Delete')
+                }}
+            />
     </View>
+    </NavigationContainer>
 );
 }
 
