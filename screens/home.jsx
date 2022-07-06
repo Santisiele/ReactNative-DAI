@@ -43,6 +43,12 @@ function Home({navigation}) {
                 navigation.navigate('Delete')
                 }}
             />
+            <Boton
+                text= "Get Personaje"
+                onPress={ () =>{
+                navigation.navigate('Get')
+                }}
+            />
     </View>
 );
 }

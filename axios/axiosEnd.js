@@ -1,12 +1,12 @@
-import axios from 'axios'
-import AxiosClient from './miEdificioClient';
+import PersonajeClient from './axiosClient';
 import React, {useState, useEffect, useContext} from 'react';
+import { registerAsset } from 'react-native-web/dist/cjs/modules/AssetRegistry';
 
 
-export const getAll = async (userState) => {
+export const deletepersonajebyid = async (userState) => {
     console.log(userState);  
-    AxiosClient
-        .post(`/character`, {
+    PersonajeClient
+        .delete(`/character/`, userState,{
           ...userState
         })
         .then((res) => {

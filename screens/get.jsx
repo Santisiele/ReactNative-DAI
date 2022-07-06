@@ -6,8 +6,6 @@ import Boton from '../components/boton'
 
 
 function Get({navigation}) {
-  const [text, onChangeText] = React.useState("Useless Text");
-  
   const [number, onChangeNumber] = React.useState(null);
   return (
     <View style={styles.container}>
