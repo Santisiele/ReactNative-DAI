@@ -1,18 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Input } from 'react-native';
 import React from 'react';
-import Boton from './components/boton'
+import Boton from '../components/boton'
 import { useNavigation } from '@react-navigation/native';
 import Teclado from '../components/teclado';
-import { TextInput } from 'react-native-web';
 
-function getById() {
+function GetById() {
     return (
     <View style={styles.container}>
         <Teclado>
+            
             <Text>Get personaje by Id</Text>
             <StatusBar style="auto" />
-            <TextInput
+            <Input
                 style={styles.textInput}
                 keyboardType='numeric'
                 placeholder="Ingrese el Id"
@@ -30,7 +30,7 @@ function getById() {
 );
 }
 
-export default getById;
+export default GetById;
 
 const styles = StyleSheet.create({
     container: {

@@ -1,23 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Input } from 'react-native';
 import React from 'react';
-import Boton from './components/boton'
-import { useNavigation } from '@react-navigation/native';
-import Teclado from '../components/teclado';
-import { TextInput } from 'react-native-web';
+import Boton from '../components/boton'
 
-function deleteById() {
+function DeleteById() {
     return (
     <View style={styles.container}>
-        <Teclado>
             <Text>Delete personaje by Id</Text>
             <StatusBar style="auto" />
-            <TextInput
+            <Text style={styles.atras}
+                onPress={ () =>{
+                navigation.navigate('home')
+                }}> 
+                Volver atrás
+            </Text>
+            <Input
                 style={styles.textInput}
-                keyboardType='numeric'
                 placeholder="Ingrese el Id"
                 name="Id"
-                onChange={(e) => onChangeInput(e, "direccion")}
             />
             <Boton
                 text= "Otra"
@@ -25,12 +25,11 @@ function deleteById() {
                 navigation.navigate('getById')
                 }}
             />
-        </Teclado>
     </View>
 );
 }
 
-export default deleteById;
+export default DeleteById;
 
 const styles = StyleSheet.create({
     container: {

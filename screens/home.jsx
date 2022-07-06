@@ -1,15 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import Boton from './components/boton'
-import MainStack from './navigation/MainStack';
-import {NavigationContainer} from '@react-navigation/native'
-import { useNavigation } from '@react-navigation/native';
+import Boton from '../components/boton'
 
 
-function Home() {
+function Home({navigation}) {
     return (
-        <NavigationContainer>
     <View style={styles.container}>
             <Text>Personajes API</Text>
             <StatusBar style="auto" />
@@ -48,7 +44,6 @@ function Home() {
                 }}
             />
     </View>
-    </NavigationContainer>
 );
 }
 

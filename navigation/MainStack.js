@@ -3,17 +3,17 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-import Home from '../screens/home'
-import Get from '../screens/get'
-import GetById from '../screens/getById'
-import DeleteById from '../screens/delete'
+import Home from '../screens/Home'
+import Get from '../screens/Get'
+import GetById from '../screens/GetById'
+import DeleteById from '../screens/Delete'
 
 
 const Stack = createNativeStackNavigator()
 
 const MainStack =()=>{
 return(
-<NavigationContainer>
+<NavigationContainer independent={true}>
     <Stack.Navigator
     screenOptions={{
         headerShown:false
@@ -24,16 +24,16 @@ return(
             component={ Home }
         />
         <Stack.Screen
-            name='Get personaje'
+            name='Get'
             component={ Get }
         />
 
         <Stack.Screen
-            name='Get personaje by Id'
+            name='GetById'
             component={ GetById }
         />
         <Stack.Screen
-            name='Delete personaje by Id'
+            name='Delete'
             component={ DeleteById }
         />
 
