@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
+import Home from '../screens/home'
 import Get from '../screens/get'
 import GetById from '../screens/getById'
 import DeleteById from '../screens/delete'
@@ -18,6 +19,10 @@ return(
         headerShown:false
     }
     }>
+        <Stack.Screen
+            name='Home'
+            component={ Home }
+        />
         <Stack.Screen
             name='Get personaje'
             component={ Get }

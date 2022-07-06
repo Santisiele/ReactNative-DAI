@@ -4,7 +4,7 @@ import React from 'react';
 import Boton from './components/boton'
 import { useNavigation } from '@react-navigation/native';
 
-function get() {
+function get({navigation}) {
   return (
     <View style={styles.container}>
       <Text>Test DAI</Text>
