@@ -3,10 +3,17 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-import Home from '../screens/Home'
-import Get from '../screens/Get'
-import GetById from '../screens/GetById'
-import DeleteById from '../screens/Delete'
+import HomeGeneral from '../screens/HomeGeneral'
+
+//personajes
+import HomePersonaje from '../screens/Personaje/HomePersonaje'
+import GetPersonaje from '../screens/Personaje/GetPersonaje'
+import GetPersonajeById from '../screens/Personaje/GetPersonajeById'
+import CreatePersonaje from '../screens/Personaje/CreatePersonaje'
+import UpdatePersonaje from '../screens/Personaje/UpdatePersonaje'
+import DeletePersonajeById from '../screens/Personaje/DeletePersonajeById'
+
+//peliculasS
 
 
 const Stack = createNativeStackNavigator()
@@ -20,21 +27,32 @@ return(
     }
     }>
         <Stack.Screen
-            name='Home'
-            component={ Home }
+            name='HomeGeneral'
+            component={ HomeGeneral }
         />
         <Stack.Screen
-            name='Get'
-            component={ Get }
-        />
-
-        <Stack.Screen
-            name='GetById'
-            component={ GetById }
+            name='HomePersonaje'
+            component={ HomePersonaje }
         />
         <Stack.Screen
-            name='Delete'
-            component={ DeleteById }
+            name='GetPersonaje'
+            component={ GetPersonaje }
+        />
+        <Stack.Screen
+            name='GetPersonajeById'
+            component={ GetPersonajeById }
+        />
+        <Stack.Screen
+            name='CreatePersonaje'
+            component={ CreatePersonaje }
+        />
+        <Stack.Screen
+            name='UpdatePersonaje'
+            component={ UpdatePersonaje }
+        />
+        <Stack.Screen
+            name='DeletePersonajeById'
+            component={ DeletePersonajeById }
         />
 
     </Stack.Navigator>

@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
 import React, {useState} from 'react';
-import Boton from '../components/boton'
+import Boton from '../../components/boton'
 
-function DeleteById() {  
+function DeletePersonajeById({navigation}) {  
 
     const [userState, setUserState] = useState({
         Id: null
@@ -15,7 +15,7 @@ function DeleteById() {
           console.log("hhh")
           Alert.alert("Por favor ingresar el id")
         } else {
-          await login(userState).then(() => {
+          await borrar(userState).then(() => {
             console.log("entro")
             navigation.navigate('Delete personaje')
           })
@@ -33,7 +33,7 @@ function DeleteById() {
             <StatusBar style="auto" />
             <Text style={styles.atras}
                 onPress={ () =>{
-                navigation.navigate('Home')
+                navigation.navigate('HomePersonaje')
                 }}> 
                 Volver atrás
             </Text>
@@ -53,7 +53,7 @@ function DeleteById() {
 );
 }
 
-export default DeleteById;
+export default DeletePersonajeById;
 
 const styles = StyleSheet.create({
     container: {

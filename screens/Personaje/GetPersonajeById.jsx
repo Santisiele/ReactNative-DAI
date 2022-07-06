@@ -1,17 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Input } from 'react-native';
 import React from 'react';
-import Boton from '../components/boton'
-import { useNavigation } from '@react-navigation/native';
-import Teclado from '../components/teclado';
+import Boton from '../../components/boton'
+import Teclado from '../../components/teclado';
 
-function GetById() {
+function GetPersonajeById({navigation}) {
     return (
     <View style={styles.container}>
         <Teclado>
-            
             <Text>Get personaje by Id</Text>
             <StatusBar style="auto" />
+            <Text style={styles.atras}
+            onPress={ () =>{
+            navigation.navigate('HomePersonaje')
+            }}> 
+            </Text>
             <Input
                 style={styles.textInput}
                 keyboardType='numeric'
@@ -20,9 +23,9 @@ function GetById() {
                 onChange={(e) => onChangeInput(e, "direccion")}
             />
             <Boton
-                text= "Otra"
+                text= "Get"
                 onPress={ () =>{
-                navigation.navigate('getById')
+                navigation.navigate('GetPersonajeById')
                 }}
             />
         </Teclado>
@@ -30,7 +33,7 @@ function GetById() {
 );
 }
 
-export default GetById;
+export default GetPersonajeById;
 
 const styles = StyleSheet.create({
     container: {

@@ -1,19 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import React, {useState} from 'react';
-import Boton from '../components/boton'
+import Boton from '../../components/boton'
 
 
 
-function Get({navigation}) {
+function GetPersonaje({navigation}) {
   const [number, onChangeNumber] = React.useState(null);
   return (
     <View style={styles.container}>
-      <Text>Test DAI</Text>
+      <Text>Get Personaje</Text>
       <StatusBar style="auto" />
       <Text style={styles.atras}
           onPress={ () =>{
-            navigation.navigate('Home')
+            navigation.navigate('HomePersonaje')
           }}> 
           Volver atrás
       </Text>
@@ -26,7 +26,7 @@ function Get({navigation}) {
           keyboardType="numeric"
         />
       <Boton
-        text= "Otra"
+        text= "Get"
         onPress={ () =>{
           navigation.navigate('Home') 
         }}
@@ -35,7 +35,7 @@ function Get({navigation}) {
   );
 }
 
-export default Get
+export default GetPersonaje
 
 const styles = StyleSheet.create({
   container: {
@@ -50,4 +50,13 @@ const styles = StyleSheet.create({
     color: 'blue',
     textDecorationLine:'underline'
   },
+  textInput: {
+    borderWidth: 1,
+    padding: 15,
+    width: "80%",
+    borderRadius: 8,
+    backgroundColor: "#fff",
+    marginTop: 15,
+    marginBottom: -5
+},
 });
