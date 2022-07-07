@@ -2,28 +2,29 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import React, {useState} from 'react';
 import Boton from '../../components/boton'
+import {createPersonaje} from '../../services/axiosEnd'
 
 
 
 function CreatePersonaje({navigation}) {
     const [userState, setUserState] = useState({
-        Imagen: null,
-        Nombre: null,
-        Peso: null,
-        Edad: null,
-        Historia: null,
-        ComidaFavorita: null
+        imagen: "",
+        nombre: "",
+        peso: 0,
+        edad: 0,
+        historia: "",
+        comidaFavorita: ""
     });
 
     const onCreatePress = async (e) => {
     
-        if (!userState.Imagen || !userState.Nombre || !userState.Peso || !userState.Edad || !userState.Historia || !userState.ComidaFavorita){
+        if (!userState.imagen || !userState.nombre || !userState.peso || !userState.edad || !userState.historia || !userState.comidaFavorita){
             console.log("hhh")
             Alert.alert("Por favor ingresar todos los datos")
         } else {
-            await borrar(userState).then(() => {
+            await createPersonaje(userState).then(() => {
             console.log("entro")
-            navigation.navigate('Create personaje')
+            navigation.navigate('HomeGeneral')
         })
             .catch(() => {
             console.log("no entro")
@@ -43,53 +44,51 @@ function CreatePersonaje({navigation}) {
         </Text>
         <TextInput
             style={styles.textInput}
-            onChangeText={number => setUserState({...userState, Imagen: text}) }
-            value={userState.Imagen}
+            onChangeText={text => setUserState({...userState, imagen: text}) }
+            value={userState.imagen}
             placeholder="Ingrese la imagen"
             name="imagen"
         />
         <TextInput
             style={styles.textInput}
-            onChangeText={number => setUserState({...userState, Nombre: text}) }
-            value={userState.Nombre}
+            onChangeText={text => setUserState({...userState, nombre: text}) }
+            value={userState.nombre}
             placeholder="Ingrese el nombre"
             name="nombre"
         />
         <TextInput
             style={styles.textInput}
-            onChangeText={number => setUserState({...userState, Peso: number}) }
-            value={userState.Peso}
+            onChangeText={number => setUserState({...userState, peso: number}) }
+            value={userState.peso}
             placeholder="Ingrese el peso"
             name="peso"
             keyboardType="numeric"
         />
         <TextInput
             style={styles.textInput}
-            onChangeText={number => setUserState({...userState, Edad: number}) }
-            value={userState.Edad}
+            onChangeText={number => setUserState({...userState, edad: number}) }
+            value={userState.edad}
             placeholder="Ingrese la edad"
             name="edad"
             keyboardType="numeric"
         />
         <TextInput
             style={styles.textInput}
-            onChangeText={number => setUserState({...userState, Historia: text}) }
-            value={userState.Historia}
+            onChangeText={text => setUserState({...userState, historia: text}) }
+            value={userState.historia}
             placeholder="Ingrese la historia"
             name="historia"
         />
         <TextInput
             style={styles.textInput}
-            onChangeText={number => setUserState({...userState, ComidaFavorita: text}) }
-            value={userState.ComidaFavorita}
+            onChangeText={text => setUserState({...userState, comidaFavorita: text}) }
+            value={userState.comidaFavorita}
             placeholder="Ingrese la comida favorita"
             name="comidaFavorita"
         />
         <Boton
         text= "Create"
-        onPress={ () =>{
-            navigation.navigate('HomePersonaje') 
-        }}
+        onPress={onCreatePress}
         />
     </View>
     );

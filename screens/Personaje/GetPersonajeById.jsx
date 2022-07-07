@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Input } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import React from 'react';
 import Boton from '../../components/boton'
 import Teclado from '../../components/teclado';
@@ -15,7 +15,7 @@ function GetPersonajeById({navigation}) {
             navigation.navigate('HomePersonaje')
             }}> 
             </Text>
-            <Input
+            <TextInput
                 style={styles.textInput}
                 keyboardType='numeric'
                 placeholder="Ingrese el Id"

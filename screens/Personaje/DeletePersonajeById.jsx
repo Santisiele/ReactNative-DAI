@@ -2,22 +2,23 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
 import React, {useState} from 'react';
 import Boton from '../../components/boton'
+import {deletePersonaje} from '../../services/axiosEnd'
 
 function DeletePersonajeById({navigation}) {  
 
     const [userState, setUserState] = useState({
-        Id: null
+        id: null
       });
 
     const onDeletePress = async (e) => {
     
-        if (!userState.Id){
+        if (!userState.id){
           console.log("hhh")
           Alert.alert("Por favor ingresar el id")
         } else {
-          await borrar(userState).then(() => {
+          await deletePersonaje(userState).then(() => {
             console.log("entro")
-            navigation.navigate('Delete personaje')
+            navigation.navigate('HomeGeneral')
           })
           .catch(() => {
             console.log("no entro")
@@ -39,8 +40,8 @@ function DeletePersonajeById({navigation}) {
             </Text>
             <TextInput
                 style={styles.textInput}
-                onChangeText={number => setUserState({...userState, Id: number}) }
-                value={userState.Id}
+                onChangeText={number => setUserState({...userState, id: number}) }
+                value={userState.id}
                 placeholder="Ingrese el Id"
                 name="Id"
                 keyboardType="numeric"
