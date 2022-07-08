@@ -3,7 +3,9 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
+//general
 import HomeGeneral from '../screens/HomeGeneral'
+import Response from '../screens/Response'
 
 //personajes
 import HomePersonaje from '../screens/Personaje/HomePersonaje'
@@ -36,6 +38,10 @@ return(
         <Stack.Screen
             name='HomeGeneral'
             component={ HomeGeneral }
+        />
+        <Stack.Screen
+            name='Response'
+            component={ Response }
         />
 
         <Stack.Screen

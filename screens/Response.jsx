@@ -5,7 +5,7 @@ import Boton from '../components/boton'
 import {getToken} from '../services/tokenClient'
 
 
-function HomeGeneral({navigation}) {
+function Response({navigation}) {
     /*const [userState, setUserState] = useState({
         token: ""
     });
@@ -40,7 +40,7 @@ function HomeGeneral({navigation}) {
     </View>
     );
     }
-export default HomeGeneral;
+export default Response;
 
 const styles = StyleSheet.create({
     container: {
