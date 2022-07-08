@@ -8,7 +8,6 @@ import {updatePersonaje} from '../../services/personajeEnd'
 
 function UpdatePersonaje({navigation}) {
     const [userState, setUserState] = useState({
-        id: null,
         imagen: "",
         nombre: "",
         peso: null,
@@ -17,13 +16,17 @@ function UpdatePersonaje({navigation}) {
         comidaFavorita: ""
     });
 
+    const [userId, setUserId] = useState({
+        id: null,
+    });
+
     const onUpdatePress = async (e) => {
     
-        if (!userState.id || !userState.imagen || !userState.nombre || !userState.peso || !userState.edad || !userState.historia || !userState.comidaFavorita){
+        if (!userId.id || !userState.imagen || !userState.nombre || !userState.peso || !userState.edad || !userState.historia || !userState.comidaFavorita){
             console.log("hhh")
             Alert.alert("Por favor ingresar todos los datos")
         } else {
-            await updatePersonaje(userState).then(() => {
+            await updatePersonaje(userState, userId).then(() => {
             console.log("entro")
             navigation.navigate('HomeGeneral')
         })
@@ -46,8 +49,8 @@ function UpdatePersonaje({navigation}) {
         </Text>
         <TextInput
             style={styles.textInput}
-            onChangeText={text => setUserState({...userState, id: number}) }
-            value={userState.id}
+            onChangeText={number => setUserId({...userId, id: number}) }
+            value={userId.id}
             placeholder="Ingrese el id"
             name="id"
         />

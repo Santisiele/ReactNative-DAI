@@ -1,5 +1,37 @@
 import axiosClient from './axiosClient';
+import {useState} from 'react'
 import { getToken } from './tokenClient';
+
+export const getpersonaje = async (userState) => {
+  console.log(userState);  
+  axiosClient
+      .post(`/character/`,{
+        ...userState
+      })
+      .then((res) => {
+        let userInfo = res.status;
+      })
+      .catch((e) => {
+        console.log(`register error`, e.response);
+      });
+  };
+
+export const getperbyid = async (userState) => {  
+  let personaje;
+  axiosClient
+      .get(`/character/${userState.id}`,{
+        ...userState
+      })
+      .then((res) => {
+        personaje =res.data
+        console.log(personaje)
+        let userInfo = res.status;
+      })
+      .catch((e) => {
+        console.log(`register error`, e.response);
+      });
+      return personaje
+  };
 
 export const createPersonaje = async (userState) => {
     console.log(userState);  
@@ -15,10 +47,10 @@ export const createPersonaje = async (userState) => {
         });
     };
 
-    export const updatePersonaje = async (userState) => {
+    export const updatePersonaje = async (userState, userId) => {
       console.log(userState);  
       axiosClient
-          .put(`/character/${userState.id}`,{
+          .put(`/character/${userId.id}`,{
             ...userState
           })
           .then((res) => {
