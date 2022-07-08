@@ -12,7 +12,7 @@ function GetPersonajeById({navigation}) {
         loaded: false
     });
     const [personajeState, setpersonaje] = useState({
-        personaje: ""
+        personaje: []
     });
     const onGetByIdPress = async (e) => {
     
@@ -20,12 +20,17 @@ function GetPersonajeById({navigation}) {
             console.log("hhh")
             Alert.alert("Por favor ingresar el id")
         } else {
-            personajeState.personaje = await getperbyid(userState)
-            setLoad(loadState.loaded=true)
-            console.log("este es el personaje: ", personajeState.personaje)
-            console.log(loadState.loaded)
-            navigation.navigate('GetPersonajeById')
-        }
+            getperbyid(userState)
+            .then((personaje)=>{
+                setLoad(loadState.loaded=true)
+                setpersonaje({personaje: personaje})
+                navigation.navigate('GetPersonajeById')
+            })
+            .catch(() => {
+                console.log("no entro")
+                Alert.alert("Error")
+                });
+            }
     }
 
     return (
@@ -39,6 +44,7 @@ function GetPersonajeById({navigation}) {
                 Volver atrás
             </Text>
             <TextInput
+                style={styles.textInput}
                 onChangeText={number => setUserState({...userState, id: number}) }
                 value={userState.id}
                 placeholder="Ingrese el Id"
@@ -49,11 +55,12 @@ function GetPersonajeById({navigation}) {
                 text= "Get"
                 onPress={onGetByIdPress}
             />
-            {
-                loadState.loaded && <Boton
-                text= {personajeState.nombre}
-            />
-            }
+            
+            <Text style={styles.sub}>{personajeState.personaje.nombre}</Text>
+            <Text style={styles.sub}>{personajeState.personaje.edad}</Text>
+            <Text style={styles.sub}>{personajeState.personaje.peso}</Text>
+            <Text style={styles.sub}>{personajeState.personaje.historia}</Text>
+            <Text style={styles.sub}>{personajeState.personaje.comidaFavorita}</Text>
     </View>
 );
 }
@@ -83,4 +90,7 @@ const styles = StyleSheet.create({
         color: 'blue',
         textDecorationLine:'underline'
     },
+    sub:{
+        textAlign: 'center'
+      }
 });

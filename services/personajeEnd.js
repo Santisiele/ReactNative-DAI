@@ -18,7 +18,7 @@ export const getpersonaje = async (userState) => {
 
 export const getperbyid = async (userState) => {  
   let personaje;
-  axiosClient
+  const response = axiosClient
       .get(`/character/${userState.id}`,{
         ...userState
       })
@@ -26,11 +26,12 @@ export const getperbyid = async (userState) => {
         personaje =res.data
         console.log(personaje)
         let userInfo = res.status;
+        return personaje
       })
       .catch((e) => {
         console.log(`register error`, e.response);
       });
-      return personaje
+    return response
   };
 
 export const createPersonaje = async (userState) => {
