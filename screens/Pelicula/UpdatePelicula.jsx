@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Alert} from 'react-native';
 import React, {useState} from 'react';
 import Boton from '../../components/boton'
-import {createPersonaje} from '../../services/personajeEnd'
+import {updatePelicula} from '../../services/peliculaEnd'
 
 
 
-function CreatePersonaje({navigation}) {
+function UpdatePelicula({navigation}) {
     const [userState, setUserState] = useState({
+        id: null,
         imagen: "",
         nombre: "",
         peso: null,
@@ -16,13 +17,13 @@ function CreatePersonaje({navigation}) {
         comidaFavorita: ""
     });
 
-    const onCreatePress = async (e) => {
+    const onUpdatePress = async (e) => {
     
         if (!userState.imagen || !userState.nombre || !userState.peso || !userState.edad || !userState.historia || !userState.comidaFavorita){
             console.log("hhh")
             Alert.alert("Por favor ingresar todos los datos")
         } else {
-            await createPersonaje(userState).then(() => {
+            await updatePelicula(userState).then(() => {
             console.log("entro")
             navigation.navigate('HomeGeneral')
         })
@@ -32,16 +33,24 @@ function CreatePersonaje({navigation}) {
         });
         }
     }
+
     return (
-    <View style={styles.container}>
-        <Text>Create Personaje</Text>
+        <View style={styles.container}>
+        <Text>Update Pelicula</Text>
         <StatusBar style="auto" />
         <Text style={styles.atras}
             onPress={ () =>{
-            navigation.navigate('HomePersonaje')
+            navigation.navigate('HomePelicula')
         }}> 
         Volver atrás
         </Text>
+        <TextInput
+            style={styles.textInput}
+            onChangeText={text => setUserState({...userState, id: number}) }
+            value={userState.id}
+            placeholder="Ingrese la id"
+            name="id"
+        />
         <TextInput
             style={styles.textInput}
             onChangeText={text => setUserState({...userState, imagen: text}) }
@@ -87,17 +96,17 @@ function CreatePersonaje({navigation}) {
             name="comidaFavorita"
         />
         <Boton
-        text= "Create"
-        onPress={onCreatePress}
+        text= "Update"
+        onPress={onUpdatePress}
         />
     </View>
     );
 }
 
-export default CreatePersonaje
+export default UpdatePelicula
 
 const styles = StyleSheet.create({
-        container: {
+    container: {
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',

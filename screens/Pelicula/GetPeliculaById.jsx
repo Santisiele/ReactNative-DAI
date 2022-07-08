@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
 import React, {useState} from 'react';
 import Boton from '../../components/boton'
 
-function GetPersonajeById({navigation}) {
+function GetPeliculaById({navigation}) {
     const [userState, setUserState] = useState({
         id: ""
     });
@@ -23,14 +23,13 @@ function GetPersonajeById({navigation}) {
             });
         }
     }
-
     return (
     <View style={styles.container}>
-            <Text>Get personaje by Id</Text>
+            <Text>Get pelicula by Id</Text>
             <StatusBar style="auto" />
             <Text style={styles.atras}
                 onPress={ () =>{
-                navigation.navigate('HomePersonaje')
+                navigation.navigate('HomePelicula')
                 }}> 
                 Volver atrás
             </Text>
@@ -48,7 +47,7 @@ function GetPersonajeById({navigation}) {
 );
 }
 
-export default GetPersonajeById;
+export default GetPeliculaById;
 
 const styles = StyleSheet.create({
     container: {

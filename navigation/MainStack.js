@@ -13,7 +13,13 @@ import CreatePersonaje from '../screens/Personaje/CreatePersonaje'
 import UpdatePersonaje from '../screens/Personaje/UpdatePersonaje'
 import DeletePersonajeById from '../screens/Personaje/DeletePersonajeById'
 
-//peliculasS
+//peliculas
+import HomePelicula from '../screens/Pelicula/HomePelicula'
+import GetPelicula from '../screens/Pelicula/GetPelicula'
+import GetPeliculaById from '../screens/Pelicula/GetPeliculaById'
+import CreatePelicula from '../screens/Pelicula/CreatePelicula'
+import UpdatePelicula from '../screens/Pelicula/UpdatePelicula'
+import DeletePeliculaById from '../screens/Pelicula/DeletePeliculaById'
 
 
 const Stack = createNativeStackNavigator()
@@ -26,10 +32,12 @@ return(
         headerShown:false
     }
     }>
+
         <Stack.Screen
             name='HomeGeneral'
             component={ HomeGeneral }
         />
+
         <Stack.Screen
             name='HomePersonaje'
             component={ HomePersonaje }
@@ -53,6 +61,32 @@ return(
         <Stack.Screen
             name='DeletePersonajeById'
             component={ DeletePersonajeById }
+        />
+
+        
+        <Stack.Screen
+            name='HomePelicula'
+            component={ HomePelicula }
+        />
+        <Stack.Screen
+            name='GetPelicula'
+            component={ GetPelicula }
+        />
+        <Stack.Screen
+            name='GetPeliculaById'
+            component={ GetPeliculaById }
+        />
+        <Stack.Screen
+            name='CreatePelicula'
+            component={ CreatePelicula }
+        />
+        <Stack.Screen
+            name='UpdatePelicula'
+            component={ UpdatePelicula }
+        />
+        <Stack.Screen
+            name='DeletePeliculaById'
+            component={ DeletePeliculaById }
         />
 
     </Stack.Navigator>

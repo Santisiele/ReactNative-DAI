@@ -5,14 +5,14 @@ import Boton from '../../components/boton'
 
 
 
-function GetPersonaje({navigation}) {
+function GetPelicula({navigation}) {
   return (
     <View style={styles.container}>
-      <Text>Get Personaje</Text>
+      <Text>Get Pelicula</Text>
       <StatusBar style="auto" />
       <Text style={styles.atras}
           onPress={ () =>{
-            navigation.navigate('HomePersonaje')
+            navigation.navigate('HomePelicula')
           }}> 
           Volver atrás
       </Text>
@@ -25,14 +25,14 @@ function GetPersonaje({navigation}) {
       <Boton
         text= "Get"
         onPress={ () =>{
-          navigation.navigate('HomePersonaje') 
+          navigation.navigate('HomePelicula') 
         }}
       />
     </View>
   );
 }
 
-export default GetPersonaje
+export default GetPelicula
 
 const styles = StyleSheet.create({
   container: {

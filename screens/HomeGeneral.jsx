@@ -6,17 +6,19 @@ import {getToken} from '../services/tokenClient'
 
 
 function HomePersonaje({navigation}) {
-    const [userState, setUserState] = useState({
+    /*const [userState, setUserState] = useState({
         token: ""
     });
 
     const onTokenPress = async (screen) => {
-
-          await getToken(userState).then(() => {
+        await getToken(userState).then(() => {
             console.log("entro")
             navigation.navigate(screen)
-          })
-        }
+        }).catch(() => {
+            console.log("no entro")
+            Alert.alert("Error")
+            });
+        }*/
 
     return (
     <View style={styles.container}>
@@ -24,7 +26,9 @@ function HomePersonaje({navigation}) {
             <StatusBar style="auto" />
             <Boton
                 text= "Personajes"
-                onPress={onTokenPress("HomeGeneral")}
+                onPress={ () =>{
+                    navigation.navigate('HomePersonaje')
+                    }} 
             />
             <StatusBar style="auto" />
             <Boton

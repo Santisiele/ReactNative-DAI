@@ -3,52 +3,57 @@ import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
 import React, {useState} from 'react';
 import Boton from '../../components/boton'
 
-function GetPersonajeById({navigation}) {
+function DeletePeliculaById({navigation}) {  
+
     const [userState, setUserState] = useState({
         id: ""
-    });
-    const onGetByIdPress = async (e) => {
+      });
+
+    const onDeletePress = async (e) => {
     
         if (!userState.id){
-            console.log("hhh")
-            Alert.alert("Por favor ingresar el id")
+          console.log("hhh")
+          Alert.alert("Por favor ingresar el id")
         } else {
-            await deletePersonaje(userState).then(() => {
+          await deletePelicula(userState).then(() => {
             console.log("entro")
             navigation.navigate('HomeGeneral')
-            })
-            .catch(() => {
+          })
+          .catch(() => {
             console.log("no entro")
-            Alert.alert("Error")
-            });
+          Alert.alert("Error")
+          });
         }
-    }
+      }
+    
 
     return (
     <View style={styles.container}>
-            <Text>Get personaje by Id</Text>
+            <Text>Delete pelicula by Id</Text>
             <StatusBar style="auto" />
             <Text style={styles.atras}
                 onPress={ () =>{
-                navigation.navigate('HomePersonaje')
+                navigation.navigate('HomePelicula')
                 }}> 
                 Volver atrás
             </Text>
             <TextInput
                 style={styles.textInput}
+                onChangeText={number => setUserState({...userState, id: number}) }
+                value={userState.id}
                 placeholder="Ingrese el Id"
                 name="Id"
                 keyboardType="numeric"
             />
             <Boton
-                text= "Get"
-                onPress={onGetByIdPress}
+                text= "Borrar"
+                onPress={onDeletePress}
             />
     </View>
 );
 }
 
-export default GetPersonajeById;
+export default DeletePeliculaById;
 
 const styles = StyleSheet.create({
     container: {
@@ -72,5 +77,5 @@ const styles = StyleSheet.create({
         left:'15%',
         color: 'blue',
         textDecorationLine:'underline'
-    },
+      },
 });

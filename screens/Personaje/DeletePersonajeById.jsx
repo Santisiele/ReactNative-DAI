@@ -2,12 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
 import React, {useState} from 'react';
 import Boton from '../../components/boton'
-import {deletePersonaje} from '../../services/axiosEnd'
+import {deletePersonaje} from '../../services/personajeEnd'
 
 function DeletePersonajeById({navigation}) {  
 
     const [userState, setUserState] = useState({
-        id: null
+        id: ""
       });
 
     const onDeletePress = async (e) => {
