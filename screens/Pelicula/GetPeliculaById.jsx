@@ -66,7 +66,7 @@ function GetPeliculaById({navigation}) {
             }
             {loadState.loaded
                 ? <Text/>
-                :   (<Text style={styles.sub}> calificacion: {peliculaState.pelicula.clasificacion}</Text>)
+                :   (<Text style={styles.sub}> Calificacion: {peliculaState.pelicula.clasificacion}</Text>)
             }
     </View>
 );

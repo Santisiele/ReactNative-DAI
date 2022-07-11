@@ -82,6 +82,17 @@ const onGetPress = async (e) => {
         text= "Get"
         onPress={onGetPress}
       />
+      {
+        loadState.loaded
+        ? <Text/>
+        : <FlatList
+          keyExtractor={(item) => item.id}
+          data={personajeState.lista}
+          renderItem={({item}) =>(
+          <Text style={styles.lista}>{item.nombre}</Text>
+        )}
+        />
+      }
     </View>
   );
 }
@@ -116,5 +127,15 @@ const styles = StyleSheet.create({
   },
   sub:{
     textAlign: 'center'
-  }
+  },
+  lista: {
+    color:'white',
+    justifyContent:'center',
+    borderWidth: 1,
+    borderColor: "lightblue",
+    padding: 10,
+    backgroundColor: "orange",
+    marginTop: 15,
+    marginBottom: -5
+}
 });

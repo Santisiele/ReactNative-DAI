@@ -21,14 +21,16 @@ export const getpersonaje = async () => {
 
 export const getperbyid = async (userState) => {  
   let personaje;
+  let pelicula;
   const response = axiosClient
       .get(`/character/${userState.id}`,{
         ...userState
       })
       .then((res) => {
         personaje =res.data
+        pelicula = res.data.PeliculasSeries
         console.log(personaje)
-        return personaje
+        return personaje, pelicula
       })
       .catch((e) => {
         console.log(`register error`, e.response);
