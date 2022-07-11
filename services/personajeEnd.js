@@ -2,18 +2,21 @@ import axiosClient from './axiosClient';
 import {useState} from 'react'
 import { getToken } from './tokenClient';
 
-export const getpersonaje = async (userState) => {
-  console.log(userState);  
-  axiosClient
-      .post(`/character/`,{
-        ...userState
+export const getpersonaje = async () => {
+    
+  const response = axiosClient
+      .get(`/character/`,{
+        
       })
       .then((res) => {
+        let lista=res.data
         let userInfo = res.status;
+        return lista
       })
       .catch((e) => {
         console.log(`register error`, e.response);
       });
+      return response
   };
 
 export const getperbyid = async (userState) => {  

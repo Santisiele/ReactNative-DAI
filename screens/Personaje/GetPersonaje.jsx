@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, FlatList, Alert} from 'react-native';
 import React, {useState} from 'react';
 import Boton from '../../components/boton'
 import {getpersonaje} from '../../services/personajeEnd'
@@ -9,17 +9,30 @@ import {getpersonaje} from '../../services/personajeEnd'
 function GetPersonaje({navigation}) {
   const [userState, setUserState] = useState({
     nombre: "",
-    peso: null,
-    edad: null,
-    idPeliSerie: null
-});
+    peso: "",
+    edad: "",
+    idPeliSerie: ""
+  });
+
+  const [loadState, setLoad] = useState({
+    loaded: true
+  });
+
+  const [personajeState, setPersonaje] = useState({
+    lista:[]
+  }
+  )
+
 
 const onGetPress = async (e) => {
-      await getpersonaje(userState).then(() => {
-        console.log("entro")
-        navigation.navigate('Response')
-    })
-        .catch(() => {
+  getpersonaje()
+  .then((lista)=>{
+      setLoad(loadState.loaded=true)
+      setPersonaje({lista: lista})
+      console.log(personajeState.lista)
+      navigation.navigate('GetPersonaje')
+  })
+  .catch(() => {
         console.log("no entro")
         Alert.alert("Error")
     });

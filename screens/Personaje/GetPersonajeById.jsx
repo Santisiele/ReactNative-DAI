@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Alert, FlatList } from 'react-native';
 import React, {useState} from 'react';
 import Boton from '../../components/boton'
 import {getperbyid} from '../../services/personajeEnd'
@@ -9,10 +9,11 @@ function GetPersonajeById({navigation}) {
         id: ""
     });
     const [loadState, setLoad] = useState({
-        loaded: false
+        loaded: true
     });
     const [personajeState, setpersonaje] = useState({
-        personaje: []
+        personaje: [
+        ]
     });
     const onGetByIdPress = async (e) => {
     
@@ -55,12 +56,18 @@ function GetPersonajeById({navigation}) {
                 text= "Get"
                 onPress={onGetByIdPress}
             />
-            
-            <Text style={styles.sub}>{personajeState.personaje.nombre}</Text>
-            <Text style={styles.sub}>{personajeState.personaje.edad}</Text>
-            <Text style={styles.sub}>{personajeState.personaje.peso}</Text>
-            <Text style={styles.sub}>{personajeState.personaje.historia}</Text>
-            <Text style={styles.sub}>{personajeState.personaje.comidaFavorita}</Text>
+            {loadState.loaded
+                ? <Text/>
+                :   (<Text style={styles.sub}> Nombre: {personajeState.personaje.nombre}</Text>)
+            }
+            {loadState.loaded
+                ? <Text/>
+                :   (<Text style={styles.sub}> Peso: {personajeState.personaje.peso}</Text>)
+            }
+            {loadState.loaded
+                ? <Text/>
+                :   (<Text style={styles.sub}> Nombre: {personajeState.personaje.edad}</Text>)
+            }
     </View>
 );
 }
@@ -92,5 +99,15 @@ const styles = StyleSheet.create({
     },
     sub:{
         textAlign: 'center'
-      }
+    },
+    lista: {
+        color:'white',
+        fontFamily: 'Kanit-Regular',
+        borderWidth: 1,
+        borderColor: "lightblue",
+        padding: 20,
+        backgroundColor: "#5207f2",
+        marginTop: 15,
+        marginBottom: -5
+    }
 });
