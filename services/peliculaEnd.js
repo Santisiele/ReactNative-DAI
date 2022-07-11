@@ -1,6 +1,23 @@
 import axiosClient from './axiosClient';
 import { getToken } from './tokenClient';
 
+export const getmoviebyid = async (userState) => {  
+    let pelicula;
+    const response = axiosClient
+        .get(`/movies/${userState.id}`,{
+          ...userState
+        })
+        .then((res) => {
+          pelicula =res.data
+          console.log(pelicula)
+          return pelicula
+        })
+        .catch((e) => {
+          console.log(`register error`, e.response);
+        });
+      return response
+    };
+
 export const createPelicula = async (userState) => {
     console.log(userState);  
     axiosClient

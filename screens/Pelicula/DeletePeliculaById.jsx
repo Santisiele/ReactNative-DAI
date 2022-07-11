@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
 import React, {useState} from 'react';
 import Boton from '../../components/boton'
+import {deletePelicula} from '../../services/peliculaEnd'
 
 function DeletePeliculaById({navigation}) {  
 

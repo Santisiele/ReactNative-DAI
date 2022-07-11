@@ -8,29 +8,32 @@ import {updatePelicula} from '../../services/peliculaEnd'
 
 function UpdatePelicula({navigation}) {
     const [userState, setUserState] = useState({
-        id: null,
+        id: "",
         imagen: "",
-        nombre: "",
-        peso: null,
-        edad: null,
-        historia: "",
-        comidaFavorita: ""
+        titulo:"",
+        fechaCreacion:"",
+        clasificacion: ""
     });
 
     const onUpdatePress = async (e) => {
     
-        if (!userState.imagen || !userState.nombre || !userState.peso || !userState.edad || !userState.historia || !userState.comidaFavorita){
+        if (!userState.imagen || !userState.titulo || !userState.id || !userState.fechaCreacion || !userState.clasificacion){
             console.log("hhh")
             Alert.alert("Por favor ingresar todos los datos")
         } else {
-            await updatePelicula(userState).then(() => {
-            console.log("entro")
-            navigation.navigate('HomeGeneral')
-        })
-            .catch(() => {
-            console.log("no entro")
-            Alert.alert("Error")
-        });
+            if((userState.clasificacion>5) || (userState.clasificacion<1)){
+                Alert.alert("Clasificacion incorrecta, debe ser entre 1 y 5")
+            }
+            else{
+                await updatePelicula(userState).then(() => {
+                    console.log("entro")
+                    navigation.navigate('HomeGeneral')
+                })
+                    .catch(() => {
+                    console.log("no entro")
+                    Alert.alert("Error")
+                });
+            }
         }
     }
 
@@ -46,9 +49,9 @@ function UpdatePelicula({navigation}) {
         </Text>
         <TextInput
             style={styles.textInput}
-            onChangeText={text => setUserState({...userState, id: number}) }
+            onChangeText={number => setUserState({...userState, id: number}) }
             value={userState.id}
-            placeholder="Ingrese la id"
+            placeholder="Ingrese el id"
             name="id"
         />
         <TextInput
@@ -60,40 +63,26 @@ function UpdatePelicula({navigation}) {
         />
         <TextInput
             style={styles.textInput}
-            onChangeText={text => setUserState({...userState, nombre: text}) }
+            onChangeText={text => setUserState({...userState, titulo: text}) }
             value={userState.nombre}
-            placeholder="Ingrese el nombre"
-            name="nombre"
+            placeholder="Ingrese el titulo"
+            name="titulo"
         />
         <TextInput
             style={styles.textInput}
-            onChangeText={number => setUserState({...userState, peso: number}) }
+            onChangeText={text => setUserState({...userState, fechaCreacion: text}) }
             value={userState.peso}
-            placeholder="Ingrese el peso"
-            name="peso"
+            placeholder="Ingrese el fecha de creacion"
+            name="fechaCreacion"
             keyboardType="numeric"
         />
         <TextInput
             style={styles.textInput}
-            onChangeText={number => setUserState({...userState, edad: number}) }
+            onChangeText={number => setUserState({...userState, clasificacion: number}) }
             value={userState.edad}
-            placeholder="Ingrese la edad"
-            name="edad"
+            placeholder="Ingrese la clasificacion"
+            name="clasificacion"
             keyboardType="numeric"
-        />
-        <TextInput
-            style={styles.textInput}
-            onChangeText={text => setUserState({...userState, historia: text}) }
-            value={userState.historia}
-            placeholder="Ingrese la historia"
-            name="historia"
-        />
-        <TextInput
-            style={styles.textInput}
-            onChangeText={text => setUserState({...userState, comidaFavorita: text}) }
-            value={userState.comidaFavorita}
-            placeholder="Ingrese la comida favorita"
-            name="comidaFavorita"
         />
         <Boton
         text= "Update"

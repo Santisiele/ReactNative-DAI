@@ -3,14 +3,14 @@ import {useState} from 'react'
 import { getToken } from './tokenClient';
 
 export const getpersonaje = async () => {
-    
+    let lista
   const response = axiosClient
       .get(`/character/`,{
         
       })
       .then((res) => {
-        let lista=res.data
-        let userInfo = res.status;
+        lista=res.data
+        console.log(lista)
         return lista
       })
       .catch((e) => {
@@ -28,7 +28,6 @@ export const getperbyid = async (userState) => {
       .then((res) => {
         personaje =res.data
         console.log(personaje)
-        let userInfo = res.status;
         return personaje
       })
       .catch((e) => {

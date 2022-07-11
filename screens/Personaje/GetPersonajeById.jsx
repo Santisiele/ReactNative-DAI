@@ -24,7 +24,7 @@ function GetPersonajeById({navigation}) {
             getperbyid(userState)
             .then((personaje)=>{
                 setLoad(loadState.loaded=true)
-                setpersonaje({personaje: personaje})
+                setpersonaje({personaje})
                 navigation.navigate('GetPersonajeById')
             })
             .catch(() => {
@@ -58,7 +58,7 @@ function GetPersonajeById({navigation}) {
             />
             {loadState.loaded
                 ? <Text/>
-                :   (<Text style={styles.sub}> Nombre: {personajeState.personaje.nombre}</Text>)
+                :<Text style={styles.sub}> Nombre: {personajeState.personaje.nombre}</Text>
             }
             {loadState.loaded
                 ? <Text/>
@@ -66,7 +66,7 @@ function GetPersonajeById({navigation}) {
             }
             {loadState.loaded
                 ? <Text/>
-                :   (<Text style={styles.sub}> Nombre: {personajeState.personaje.edad}</Text>)
+                :   (<Text style={styles.sub}> Edad: {personajeState.personaje.edad}</Text>)
             }
     </View>
 );

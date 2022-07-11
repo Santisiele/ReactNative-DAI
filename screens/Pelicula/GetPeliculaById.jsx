@@ -2,10 +2,18 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
 import React, {useState} from 'react';
 import Boton from '../../components/boton'
+import {getmoviebyid} from '../../services/peliculaEnd'
 
 function GetPeliculaById({navigation}) {
     const [userState, setUserState] = useState({
         id: ""
+    });
+    const [loadState, setLoad] = useState({
+        loaded: true
+    });
+    const [peliculaState, setpelicula] = useState({
+        pelicula: [
+        ]
     });
     const onGetByIdPress = async (e) => {
     
@@ -13,13 +21,16 @@ function GetPeliculaById({navigation}) {
             console.log("hhh")
             Alert.alert("Por favor ingresar el id")
         } else {
-            await deletePersonaje(userState).then(() => {
-            console.log("entro")
-            navigation.navigate('HomeGeneral')
+            getmoviebyid(userState)
+            .then((pelicula)=>{
+                setLoad(loadState.loaded=true)
+                setpelicula({pelicula: pelicula})
+                navigation.navigate('GetPeliculaById')
+                console.log(pelicula);
             })
             .catch(() => {
-            console.log("no entro")
-            Alert.alert("Error")
+                console.log("no entro")
+                Alert.alert("Error")
             });
         }
     }
@@ -35,6 +46,8 @@ function GetPeliculaById({navigation}) {
             </Text>
             <TextInput
                 style={styles.textInput}
+                onChangeText={number => setUserState({...userState, id: number}) }
+                value={userState.id}
                 placeholder="Ingrese el Id"
                 name="Id"
                 keyboardType="numeric"
@@ -43,6 +56,18 @@ function GetPeliculaById({navigation}) {
                 text= "Get"
                 onPress={onGetByIdPress}
             />
+            {loadState.loaded
+                ? <Text/>
+                :<Text style={styles.sub}> Titulo: {peliculaState.pelicula.titulo}</Text>
+            }
+            {loadState.loaded
+                ? <Text/>
+                :   (<Text style={styles.sub}> Fecha de creacion: {peliculaState.pelicula.fechaCreacion}</Text>)
+            }
+            {loadState.loaded
+                ? <Text/>
+                :   (<Text style={styles.sub}> calificacion: {peliculaState.pelicula.clasificacion}</Text>)
+            }
     </View>
 );
 }

@@ -11,17 +11,17 @@ function CreatePelicula({navigation}) {
         imagen: "",
         titulo: "",
         fechaCreacion: "",
-        calificacion: null
+        clasificacion: ""
     });
 
     const onCreatePress = async (e) => {
     
-        if (!userState.imagen || !userState.titulo || !userState.fechaCreacion || !userState.calificacion){
+        if (!userState.imagen || !userState.titulo || !userState.fechaCreacion || !userState.clasificacion){
             console.log("hhh")
             Alert.alert("Por favor ingresar todos los datos")
         } else {
-            if((userState.calificacion>5) || (userState.calificacion<1)){
-                Alert.alert("Calificacion incorrecta")
+            if((userState.clasificacion>5) || (userState.clasificacion<1)){
+                Alert.alert("Clasificacion incorrecta, debe ser entre 1 y 5")
             }else{
                 await createPelicula(userState).then(() => {
                     console.log("entro")
@@ -69,25 +69,11 @@ function CreatePelicula({navigation}) {
         />
         <TextInput
             style={styles.textInput}
-            onChangeText={number => setUserState({...userState, calificacion: number}) }
-            value={userState.calificacion}
-            placeholder="Ingrese la calificacion"
-            name="calificacion"
+            onChangeText={number => setUserState({...userState, clasificacion: number}) }
+            value={userState.clasificacion}
+            placeholder="Ingrese la clasificacion"
+            name="clasificacion"
             keyboardType="numeric"
-        />
-        <TextInput
-            style={styles.textInput}
-            onChangeText={text => setUserState({...userState, historia: text}) }
-            value={userState.historia}
-            placeholder="Ingrese la historia"
-            name="historia"
-        />
-        <TextInput
-            style={styles.textInput}
-            onChangeText={text => setUserState({...userState, comidaFavorita: text}) }
-            value={userState.comidaFavorita}
-            placeholder="Ingrese la comida favorita"
-            name="comidaFavorita"
         />
         <Boton
         text= "Create"

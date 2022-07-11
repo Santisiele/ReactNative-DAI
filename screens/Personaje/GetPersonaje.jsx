@@ -25,8 +25,7 @@ function GetPersonaje({navigation}) {
 
 
 const onGetPress = async (e) => {
-  getpersonaje()
-  .then((lista)=>{
+  getpersonaje().then((lista)=>{
       setLoad(loadState.loaded=true)
       setPersonaje({lista: lista})
       console.log(personajeState.lista)
