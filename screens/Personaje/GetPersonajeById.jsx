@@ -12,8 +12,10 @@ function GetPersonajeById({navigation}) {
         loaded: true
     });
     const [personajeState, setpersonaje] = useState({
-        personaje: [
-        ]
+            nombre: "",
+            peso: "",
+            edad: "",
+            PeliculasSeries:[]
     });
     const onGetByIdPress = async (e) => {
     
@@ -23,65 +25,103 @@ function GetPersonajeById({navigation}) {
         } else {
             getperbyid(userState)
             .then((personaje)=>{
-                setLoad(loadState.loaded=true)
-                setpersonaje({personaje})
-                navigation.navigate('GetPersonajeById')
+                setLoad({loaded: true})
+                setpersonaje(personaje)
             })
-            .catch(() => {
+            .catch((e) => {
                 console.log("no entro")
+                console.log(e)
                 Alert.alert("Error")
                 });
             }
     }
 
     return (
-    <View style={styles.container}>
-            <Text>Get personaje by Id</Text>
-            <StatusBar style="auto" />
-            <Text style={styles.atras}
-                onPress={ () =>{
-                navigation.navigate('HomePersonaje')
-                }}> 
-                Volver atrás
-            </Text>
-            <TextInput
-                style={styles.textInput}
-                onChangeText={number => setUserState({...userState, id: number}) }
-                value={userState.id}
-                placeholder="Ingrese el Id"
-                name="Id"
-                keyboardType="numeric"
+        <View style={styles.containerAll}>
+          <Text style={styles.atras}
+            onPress={ () =>{
+              navigation.navigate('HomePersonaje')
+            }}> 
+            Volver atrás
+          </Text>
+          <View style={styles.containerInput}>
+          <Text style={styles.tit}>Get Personaje</Text>
+          <Text style={styles.sub}>Complete los campos deseados, de no completar ninguno se traera la lista entera</Text>
+          <StatusBar style="auto" />
+          <TextInput
+              style={styles.textInput}
+              placeholder="Ingrese el id"
+              name="id"
+              onChangeText={number => setUserState({...userState, id: number}) }
+              value={userState.id}
             />
-            <Boton
-                text= "Get"
-                onPress={onGetByIdPress}
+          <Boton
+            text= "Get"
+            onPress={onGetByIdPress}
+          />
+          </View>
+          <View style={styles.containerList}>
+          {
+            (loadState.loaded)
+            ? <Text/>
+            : <Text style={styles.sub}>Nombre: {personajeState.nombre}</Text>
+          }
+        {
+            !loadState.loaded
+            ? <Text/>
+            : <Text style={styles.sub}>Edad: {personajeState.edad}</Text>
+        }
+        {
+            !loadState.loaded
+            ? <Text/>
+            : <Text style={styles.sub}>Peso: {personajeState.peso}</Text>
+          }
+          {
+            !loadState.loaded
+            ? <Text/>
+            : <FlatList
+              keyExtractor={(item) => item.id}
+              data={personajeState.PeliculasSeries}
+              renderItem={({item}) =>(
+              <Text style={styles.lista}>{item.titulo}</Text>
+            )}
             />
-            {loadState.loaded
-                ? <Text/>
-                :<Text style={styles.sub}> Nombre: {personajeState.personaje.nombre}</Text>
-            }
-            {loadState.loaded
-                ? <Text/>
-                :   (<Text style={styles.sub}> Peso: {personajeState.personaje.peso}</Text>)
-            }
-            {loadState.loaded
-                ? <Text/>
-                :   (<Text style={styles.sub}> Edad: {personajeState.personaje.edad}</Text>)
-            }
-    </View>
-);
-}
-
-export default GetPersonajeById;
-
-const styles = StyleSheet.create({
-    container: {
+          }
+          </View>
+        </View>
+      );
+    }
+    
+    export default GetPersonajeById
+    
+    const styles = StyleSheet.create({
+      containerAll: {
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    textInput: {
+      },
+      containerInput:{
+        flex: 1,
+        marginTop: 100,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      containerList:{
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      atras:{
+        position: 'absolute',
+        top:'7%',
+        left:'15%',
+        color: 'blue',
+        textDecorationLine:'underline'
+      },
+      textInput: {
         borderWidth: 1,
         padding: 15,
         width: "80%",
@@ -89,25 +129,21 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         marginTop: 15,
         marginBottom: -5
-    },
-    atras:{
-        position: 'absolute',
-        top:'7%',
-        left:'15%',
-        color: 'blue',
-        textDecorationLine:'underline'
-    },
-    sub:{
+      },
+      tit:{
+      fontSize: 20
+      },
+      sub:{
         textAlign: 'center'
-    },
-    lista: {
+      },
+      lista: {
         color:'white',
-        fontFamily: 'Kanit-Regular',
+        justifyContent:'center',
         borderWidth: 1,
         borderColor: "lightblue",
-        padding: 20,
-        backgroundColor: "#5207f2",
+        padding: 10,
+        backgroundColor: "orange",
         marginTop: 15,
         marginBottom: -5
     }
-});
+    });

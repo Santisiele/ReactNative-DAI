@@ -10,8 +10,8 @@ function CreatePersonaje({navigation}) {
     const [userState, setUserState] = useState({
         imagen: "",
         nombre: "",
-        peso: null,
-        edad: null,
+        peso: "",
+        edad: "",
         historia: "",
         comidaFavorita: ""
     });

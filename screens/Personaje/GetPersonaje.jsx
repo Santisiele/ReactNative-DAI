@@ -25,7 +25,7 @@ function GetPersonaje({navigation}) {
 
 
 const onGetPress = async (e) => {
-  getpersonaje().then((lista)=>{
+  getpersonaje(userState).then((lista)=>{
       setLoad(loadState.loaded=true)
       setPersonaje({lista: lista})
       console.log(personajeState.lista)
@@ -37,16 +37,17 @@ const onGetPress = async (e) => {
     });
 }
   return (
-    <View style={styles.container}>
+    <View style={styles.containerAll}>
+      <Text style={styles.atras}
+        onPress={ () =>{
+          navigation.navigate('HomePersonaje')
+        }}> 
+        Volver atrás
+      </Text>
+      <View style={styles.containerInput}>
       <Text style={styles.tit}>Get Personaje</Text>
       <Text style={styles.sub}>Complete los campos deseados, de no completar ninguno se traera la lista entera</Text>
       <StatusBar style="auto" />
-      <Text style={styles.atras}
-          onPress={ () =>{
-            navigation.navigate('HomePersonaje')
-          }}> 
-          Volver atrás
-      </Text>
       <TextInput
           style={styles.textInput}
           placeholder="Ingrese el nombre"
@@ -82,6 +83,8 @@ const onGetPress = async (e) => {
         text= "Get"
         onPress={onGetPress}
       />
+      </View>
+      <View style={styles.containerList}>
       {
         loadState.loaded
         ? <Text/>
@@ -93,6 +96,7 @@ const onGetPress = async (e) => {
         )}
         />
       }
+      </View>
     </View>
   );
 }
@@ -100,7 +104,20 @@ const onGetPress = async (e) => {
 export default GetPersonaje
 
 const styles = StyleSheet.create({
-  container: {
+  containerAll: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  containerInput:{
+    flex: 1,
+    marginTop: 100,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  containerList:{
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',

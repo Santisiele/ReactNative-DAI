@@ -2,10 +2,45 @@ import axiosClient from './axiosClient';
 import {useState} from 'react'
 import { getToken } from './tokenClient';
 
-export const getpersonaje = async () => {
+export const getpersonaje = async (userState) => {
     let lista
+    let params = "";
+    let where = false;
+    let nombre = userState.nombre
+    let peso = userState.peso
+    let edad = userState.edad
+    let idPeliSerie = userState.idPeliSerie
+    if(idPeliSerie){
+      where = true;
+      params += `?idMovie=${idPeliSerie}`               
+    }
+    if(nombre){
+        if(!where){
+          where = true;
+          params+= `?nombre=${nombre}`;
+        }else{
+          params+= `&nombre=${nombre}`
+        }
+    }
+    if(edad){
+        if(!where){
+            where = true;
+            params+= `?edad=${edad}`;                    
+        }else{
+          params+= `&edad=${edad}`;
+        }
+    }
+    if(peso){
+        if(!where){
+            where = true;
+            params+= `?peso=${edad}`;                    
+        }else{
+          params+= `&peso=${edad}`;
+        }
+    }   
+    console.log(params)
   const response = axiosClient
-      .get(`/character/`,{
+      .get(`/character/${params}`,{
         
       })
       .then((res) => {
@@ -21,16 +56,14 @@ export const getpersonaje = async () => {
 
 export const getperbyid = async (userState) => {  
   let personaje;
-  let pelicula;
   const response = axiosClient
       .get(`/character/${userState.id}`,{
         ...userState
       })
       .then((res) => {
         personaje =res.data
-        pelicula = res.data.PeliculasSeries
         console.log(personaje)
-        return personaje, pelicula
+        return personaje
       })
       .catch((e) => {
         console.log(`register error`, e.response);

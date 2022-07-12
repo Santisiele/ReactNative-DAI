@@ -10,14 +10,14 @@ function UpdatePersonaje({navigation}) {
     const [userState, setUserState] = useState({
         imagen: "",
         nombre: "",
-        peso: null,
-        edad: null,
+        peso: "",
+        edad: "",
         historia: "",
         comidaFavorita: ""
     });
 
     const [userId, setUserId] = useState({
-        id: null,
+        id: "",
     });
 
     const onUpdatePress = async (e) => {
