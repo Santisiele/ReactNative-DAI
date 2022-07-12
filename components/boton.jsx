@@ -38,7 +38,7 @@ const style = StyleSheet.create({
         padding: 15,
         marginTop:'5%',
         marginBottom:'5%',
-        width: '80%'
+        width: 300
     },
 
 });

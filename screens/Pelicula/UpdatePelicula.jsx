@@ -27,7 +27,6 @@ function UpdatePelicula({navigation}) {
             else{
                 await updatePelicula(userState).then(() => {
                     console.log("entro")
-                    navigation.navigate('HomeGeneral')
                 })
                     .catch(() => {
                     console.log("no entro")

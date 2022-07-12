@@ -9,7 +9,7 @@ function GetPersonajeById({navigation}) {
         id: ""
     });
     const [loadState, setLoad] = useState({
-        loaded: true
+        loaded: false
     });
     const [personajeState, setpersonaje] = useState({
             nombre: "",
@@ -124,7 +124,7 @@ function GetPersonajeById({navigation}) {
       textInput: {
         borderWidth: 1,
         padding: 15,
-        width: "80%",
+        width: 300,
         borderRadius: 8,
         backgroundColor: "#fff",
         marginTop: 15,

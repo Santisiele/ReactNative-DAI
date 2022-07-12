@@ -1,11 +1,16 @@
 import axiosClient from './axiosClient';
 import { getToken } from './tokenClient';
 
-export const getmovie = async () => {  
+export const getmovie = async (userState) => {  
     let pelicula;
-    let address;
+    let params = ""
+    if(userState.order){
+        params += `?order=${userState.order}`
+        console.log(params)
+    }
+    console.log(userState)
     const response = axiosClient
-        .get(`/movies`,{
+        .get(`/movies${params}`,{
         })
         .then((res) => {
             pelicula =res.data
@@ -19,16 +24,15 @@ export const getmovie = async () => {
 
 export const getmoviebyid = async (userState) => {  
     let pelicula;
-    let address;
+    let personaje;
     const response = axiosClient
         .get(`/movies/${userState.id}`,{
             ...userState
         })
         .then((res) => {
-            pelicula =res.data
-            personaje = res.data.Personajes
-            console.log(address)
-            return pelicula, personaje
+            pelicula = res.data
+            console.log(pelicula)
+            return pelicula
         })
         .catch((e) => {
             console.log(`register error`, e.response);

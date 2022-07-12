@@ -18,7 +18,6 @@ function DeletePersonajeById({navigation}) {
         } else {
           await deletePersonaje(userState).then(() => {
             console.log("entro")
-            navigation.navigate('HomeGeneral')
           })
           .catch(() => {
             console.log("no entro")

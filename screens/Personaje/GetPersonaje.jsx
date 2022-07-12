@@ -29,7 +29,6 @@ const onGetPress = async (e) => {
       setLoad({loaded:true})
       setPersonaje({lista: lista})
       console.log(personajeState.lista)
-      navigation.navigate('GetPersonaje')
   })
   .catch(() => {
         console.log("no entro")
@@ -112,7 +111,7 @@ const styles = StyleSheet.create({
   },
   containerInput:{
     flex: 1,
-    marginTop: 100,
+    marginTop: 150,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
@@ -122,6 +121,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 50,
   },
   atras:{
     position: 'absolute',
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   textInput: {
     borderWidth: 1,
     padding: 15,
-    width: "80%",
+    width: 300,
     borderRadius: 8,
     backgroundColor: "#fff",
     marginTop: 15,

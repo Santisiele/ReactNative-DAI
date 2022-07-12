@@ -25,7 +25,6 @@ function CreatePelicula({navigation}) {
             }else{
                 await createPelicula(userState).then(() => {
                     console.log("entro")
-                    navigation.navigate('HomeGeneral')
                 })
                     .catch(() => {
                     console.log("no entro")

@@ -28,7 +28,6 @@ function UpdatePersonaje({navigation}) {
         } else {
             await updatePersonaje(userState, userId).then(() => {
             console.log("entro")
-            navigation.navigate('HomeGeneral')
         })
             .catch(() => {
             console.log("no entro")

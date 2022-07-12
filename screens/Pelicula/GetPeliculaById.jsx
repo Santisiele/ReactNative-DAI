@@ -9,11 +9,13 @@ function GetPeliculaById({navigation}) {
         id: ""
     });
     const [loadState, setLoad] = useState({
-        loaded: true
+        loaded: false
     });
     const [peliculaState, setpelicula] = useState({
-        pelicula: [
-        ]
+        titulo:"",
+        fechaCreacion:"",
+        clasificacion:"",
+        Personajes:[] 
     });
     const onGetByIdPress = async (e) => {
     
@@ -23,8 +25,8 @@ function GetPeliculaById({navigation}) {
         } else {
             getmoviebyid(userState)
             .then((pelicula)=>{
-                setLoad(loadState.loaded=true)
-                setpelicula({pelicula: pelicula})
+                setLoad({loaded: true})
+                setpelicula(pelicula)
                 navigation.navigate('GetPeliculaById')
                 console.log(pelicula);
             })
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
       textInput: {
         borderWidth: 1,
         padding: 15,
-        width: "80%",
+        width: 300,
         borderRadius: 8,
         backgroundColor: "#fff",
         marginTop: 15,

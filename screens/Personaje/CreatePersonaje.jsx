@@ -24,7 +24,6 @@ function CreatePersonaje({navigation}) {
         } else {
             await createPersonaje(userState).then(() => {
             console.log("entro")
-            navigation.navigate('HomeGeneral')
         })
             .catch(() => {
             console.log("no entro")

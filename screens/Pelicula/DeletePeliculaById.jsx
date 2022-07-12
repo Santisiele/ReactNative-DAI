@@ -18,7 +18,6 @@ function DeletePeliculaById({navigation}) {
         } else {
           await deletePelicula(userState).then(() => {
             console.log("entro")
-            navigation.navigate('HomeGeneral')
           })
           .catch(() => {
             console.log("no entro")
