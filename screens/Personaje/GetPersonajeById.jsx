@@ -46,7 +46,7 @@ function GetPersonajeById({navigation}) {
           </Text>
           <View style={styles.containerInput}>
           <Text style={styles.tit}>Get Personaje</Text>
-          <Text style={styles.sub}>Complete los campos deseados, de no completar ninguno se traera la lista entera</Text>
+          <Text style={styles.sub}>Buscar un personaje y sus peliculas por su id</Text>
           <StatusBar style="auto" />
           <TextInput
               style={styles.textInput}
@@ -63,8 +63,8 @@ function GetPersonajeById({navigation}) {
           <View style={styles.containerList}>
           {
             (loadState.loaded)
-            ? <Text/>
-            : <Text style={styles.sub}>Nombre: {personajeState.nombre}</Text>
+            ? <Text style={styles.sub}>Nombre: {personajeState.nombre}</Text>
+            : <Text/>
           }
         {
             !loadState.loaded

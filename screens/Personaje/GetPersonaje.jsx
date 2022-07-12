@@ -26,7 +26,7 @@ function GetPersonaje({navigation}) {
 
 const onGetPress = async (e) => {
   getpersonaje(userState).then((lista)=>{
-      setLoad(loadState.loaded=true)
+      setLoad({loaded:true})
       setPersonaje({lista: lista})
       console.log(personajeState.lista)
       navigation.navigate('GetPersonaje')
@@ -87,14 +87,14 @@ const onGetPress = async (e) => {
       <View style={styles.containerList}>
       {
         loadState.loaded
-        ? <Text/>
-        : <FlatList
-          keyExtractor={(item) => item.id}
-          data={personajeState.lista}
-          renderItem={({item}) =>(
-          <Text style={styles.lista}>{item.nombre}</Text>
-        )}
-        />
+        ? <FlatList
+        keyExtractor={(item) => item.id}
+        data={personajeState.lista}
+        renderItem={({item}) =>(
+        <Text style={styles.lista}>{item.nombre}</Text>
+      )}
+      />
+        : <Text></Text>
       }
       </View>
     </View>
